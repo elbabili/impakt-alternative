@@ -88,55 +88,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ============================================
-    // FORMULAIRE DE CONTACT
+    // FORMULAIRE DE CONTACT (Formspree)
     // ============================================
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            let isValid = true;
-            const requiredFields = ['nom', 'email', 'message'];
-            
-            requiredFields.forEach(field => {
-                const input = this.querySelector(`[name="${field}"]`);
-                if (input && !input.value.trim()) {
-                    isValid = false;
-                    input.style.borderColor = '#e74c3c';
-                    input.addEventListener('input', function() {
-                        this.style.borderColor = '';
-                    }, { once: true });
-                }
-            });
-            
-            const emailInput = this.querySelector('[name="email"]');
-            if (emailInput && !isValidEmail(emailInput.value)) {
-                isValid = false;
-                emailInput.style.borderColor = '#e74c3c';
-            }
-            
-            if (isValid) {
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                
-                submitBtn.innerHTML = 'Envoi en cours...';
-                submitBtn.disabled = true;
-                
-                setTimeout(() => {
-                    showNotification('Message envoyé avec succès ! Nous vous recontacterons rapidement.', 'success');
-                    this.reset();
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, 1500);
-            } else {
-                showNotification('Veuillez remplir tous les champs obligatoires.', 'error');
-            }
-        });
-    }
-    
-    function isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        // Afficher un message si le formulaire a été envoyé
+        if (window.location.search.includes('sent=true')) {
+            showNotification('Message envoyé avec succès ! Nous vous recontacterons rapidement.', 'success');
+            // Nettoyer l'URL
+            history.replaceState(null, '', window.location.pathname);
+        }
     }
     
     // ============================================

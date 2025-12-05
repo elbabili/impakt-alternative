@@ -78,7 +78,11 @@
                 
                 <div class="contact-form-wrapper">
                     <h3>Envoyez-nous un message</h3>
-                    <form class="contact-form">
+                    <form class="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST">
+                        <!-- Champs Formspree -->
+                        <input type="hidden" name="_next" value="https://votre-site.com/contact.html?sent=true">
+                        <input type="text" name="_gotcha" style="display:none">
+                        
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="nom">Nom *</label>
