@@ -1,0 +1,8 @@
+# robots.txt pour IMPAKT ALTERNATIVE
+# https://impakt-alternative.fr
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://impakt-alternative.fr/sitemap.xml
