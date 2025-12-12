@@ -1478,7 +1478,10 @@ body {
     }
     
     .hero-image {
-        display: none;
+        display: block;
+        order: 2;
+        max-width: 500px;
+        margin: 40px auto 0;
     }
     
     .about-grid {
